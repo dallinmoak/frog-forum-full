@@ -1,0 +1,19 @@
+{
+  "name": "frog-forum-full",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^8.2.5",
+    "@auth/core": "^0.18.6",
+    "astro": "^4.6.1",
+    "auth-astro": "^4.1.1",
+    "pg": "^8.11.5"
+  }
+}
