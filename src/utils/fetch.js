@@ -10,13 +10,18 @@ const fetchData = async (resourcePath, astroGlobal) => {
   const session = await getSession(astroGlobal.request);
   const options = {
     headers: {
-      requesterAuthId: session?.user?.id,
+      requestorAuthId: session?.user?.id,
     },
   };
   const res = await fetch(`${astroGlobal.url}/${resourcePath}`, options);
   if (res.ok) {
-    const data = await res.json();
-    return data;
+    try {
+      const data = await res.json();
+      return data;
+    } catch {
+      const error = await res.text();
+      return error;
+    }
   } else {
     const error = await res.text();
     console.error(`Error fetching data from ${resourcePath}: ${error}`);

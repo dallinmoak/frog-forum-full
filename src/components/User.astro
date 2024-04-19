@@ -3,7 +3,8 @@ const { user } = Astro.props;
 ---
 
 <div>
-  <p>First Name: {user.firstName}</p>
-  <p>Last Name: {user.lastName}</p>
+  <img src={user.profile_pic} alt={`${user.first_name}'s profile pic`} />
+  <p>First Name: {user.first_name}</p>
+  <p>Last Name: {user.last_name}</p>
   <p>email: {user.email}</p>
 </div>

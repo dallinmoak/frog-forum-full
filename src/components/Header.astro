@@ -1,15 +1,23 @@
 ---
+//@ts-nocheck
 import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
+import fetchData from "../utils/fetch";
 const session = await getSession(Astro.request);
+let user = {};
+if (session) {
+  user = await fetchData(
+    `/users/getByAuthId?authId=${session?.user?.id}`,
+    Astro
+  );
+}
 ---
 
 <h1>Frog Forum</h1>
-{JSON.stringify(session)}
 {
   session ? (
     <>
-      <p>Signed in as {session.user?.email}</p>
+      <p>{`Signed in as ${user.first_name} ${user.last_name} (${user.email})`}</p>
       <SignOut>sign out</SignOut>
     </>
   ) : (

@@ -3,11 +3,11 @@ import pg from "pg";
 export const prerender = false;
 
 const client = new pg.Client({
-  host: "bzy67yrnlufjjxwmfiss-postgresql.services.clever-cloud.com",
-  port: 50013,
-  database: "bzy67yrnlufjjxwmfiss",
-  user: "uoocqbu17khov69ffnla",
-  password: "SkHIULoXYZ0NaxIblCxZxTK9Cwgh8w",
+  host: import.meta.env.PG_HOST,
+  port: import.meta.env.PG_PORT,
+  database: import.meta.env.PG_DATABASE,
+  user: import.meta.env.PG_USER,
+  password: import.meta.env.PG_PASSWORD,
 });
 
 await client.connect();

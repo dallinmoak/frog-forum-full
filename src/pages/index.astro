@@ -1,21 +1,7 @@
 ---
-import User from "../components/User.astro";
 import PageLayout from "../layouts/PageLayout.astro";
-import fetchData from "../utils/fetch";
-const users = await fetchData("users/getAll", Astro);
-import { db } from "../utils/db";
-const { rows } = await db.query('SELECT * from "test-frog".users;');
 ---
 
 <PageLayout title='Home'>
-  {JSON.stringify(rows)}
-  {
-    users.error ? (
-      <p>{users.error}</p>
-    ) : (
-      users.map((user) => {
-        return <User {user} />;
-      })
-    )
-  }
+  <p>Welcome to the home page</p>
 </PageLayout>
